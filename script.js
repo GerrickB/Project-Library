@@ -38,8 +38,17 @@ const book2 = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
 const book3 = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
 const book4 = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
 const myLibraryTest = [book1, book2, book3, book4];
+//for testing
 
 
 const myLibrary = [];
 const btn = document.querySelector('#btn');
 btn.addEventListener('click', displayBook)
+
+//Dialog form
+const showDialog = document.getElementById("showDialog");
+const myDialog = document.getElementById("myDialog");
+
+showDialog.addEventListener("click", () => {
+  myDialog.showModal();
+})
