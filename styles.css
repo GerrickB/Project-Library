@@ -5,9 +5,16 @@
 }
 
 .container {
+  padding: 1rem;
   width: 80%;
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+dialog {
+  padding: 1rem;
+  width: 50%;
+  margin: 0 auto;
 }
