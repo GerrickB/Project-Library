@@ -29,8 +29,9 @@ function displayBook() {
 function addBookToLibrary() {
    myLibrary.push();
 }
-
-//for testing
+/* ----------------------------------------*/
+/* ---------------testing----------------*/
+/* ----------------------------------------*/
 //console.log(book1.info());
 //console.log(Book.prototype);
 const book1 = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
@@ -45,10 +46,38 @@ const myLibrary = [];
 const btn = document.querySelector('#btn');
 btn.addEventListener('click', displayBook)
 
-//Dialog form
+/* ----------------------------------------*/
+/* ------------Dialog Form----------------*/
+/* ----------------------------------------*/
 const showDialog = document.getElementById("showDialog");
 const myDialog = document.getElementById("myDialog");
+const titleInput = myDialog.querySelector("#titleInput");
+const authorInput = myDialog.querySelector("#authorInput");
+const pageNumbers = myDialog.querySelector("#pageNumbers")
+const trueRead = myDialog.querySelector("#trueRead");
+const falseRead = myDialog.querySelector("#falseRead");
+// output test
+const outputBox = document.querySelector("output");
+const confirmBtn = myDialog.querySelector("#confirmBtn");
+
 
 showDialog.addEventListener("click", () => {
   myDialog.showModal();
+});
+
+myDialog.addEventListener("close", (e) => {
+  let readValue = 'None';
+  if (trueRead.checked) {
+    readValue = "True";
+  } else if (falseRead.checked) {
+    readValue = "False";
+  }
+  
+  const returnValue = `Title: ${titleInput.value}, Author: ${authorInput.value}, pages: ${pageNumbers.value}, Have I read it? ${readValue}`
+  outputBox.value = returnValue;
+});
+
+confirmBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  myDialog.close();
 })
