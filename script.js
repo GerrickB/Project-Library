@@ -10,13 +10,29 @@ function Book(title, author, pages, read) {
   }
 }
 
+//do stuff
+function addBookToLibrary(title, author, pages, read) {
+  myLibrary.push(new Book(title, author, pages, read));
+}
+
+// refresh library so no duplication
+function refreshBook() {
+  const displayedBooks = document.querySelectorAll('.books');
+  displayedBooks.forEach((book) => {
+    book.remove();
+  });
+}
+
 function displayBook() {
-  for (let i = 0; i < myLibraryTest.length; i++) {
-    const container = document.querySelector('.container')
+  // refresh library so no duplication
+  refreshBook();
+  for (let i = 0; i < myLibrary.length; i++) {
+    const container = document.querySelector('.container');
     const div = document.createElement('div');
+    div.classList.add('books')
     const h2 = document.createElement('h2');
     const h3 = document.createElement('h3');
-    let book = myLibraryTest[i];
+    let book = myLibrary[i];
     h2.textContent = book.title;
     h3.textContent = book.author;
     div.appendChild(h2);
@@ -25,24 +41,13 @@ function displayBook() {
   }
 }
 
-//do stuff
-function addBookToLibrary() {
-   myLibrary.push();
+function removeBook() {
+  //maybe use index
 }
-/* ----------------------------------------*/
-/* ---------------testing----------------*/
-/* ----------------------------------------*/
-//console.log(book1.info());
-//console.log(Book.prototype);
-const book1 = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
-const book2 = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
-const book3 = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
-const book4 = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
-const myLibraryTest = [book1, book2, book3, book4];
-//for testing
-
 
 const myLibrary = [];
+myLibrary.push(new Book('The Hobbit', 'J.R.R. Tolkien', 295, false));
+
 const btn = document.querySelector('#btn');
 btn.addEventListener('click', displayBook)
 
@@ -68,16 +73,22 @@ showDialog.addEventListener("click", () => {
 myDialog.addEventListener("close", (e) => {
   let readValue = 'None';
   if (trueRead.checked) {
-    readValue = "True";
+    readValue = true;
   } else if (falseRead.checked) {
-    readValue = "False";
+    readValue = false;
   }
+
+  addBookToLibrary(titleInput.value, authorInput.value, pageNumbers.value, readValue)
   
-  const returnValue = `Title: ${titleInput.value}, Author: ${authorInput.value}, pages: ${pageNumbers.value}, Have I read it? ${readValue}`
-  outputBox.value = returnValue;
+  // const returnValue = `Title: ${titleInput.value}, Author: ${authorInput.value}, pages: ${pageNumbers.value}, Have I read it? ${readValue}`
+  // outputBox.value = returnValue;
 });
 
 confirmBtn.addEventListener("click", (e) => {
   e.preventDefault();
   myDialog.close();
-})
+});
+
+// // testing
+// //console.log(book1.info());
+// //console.log(Book.prototype);
