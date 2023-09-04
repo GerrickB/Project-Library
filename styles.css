@@ -29,8 +29,24 @@ main .buttons {
   border: solid black;
 }
 
+.container .books {
+  padding: 0.75rem;
+
+  display: grid;
+  gap: 1rem;
+}
+
+.books img {
+  justify-self: end;;
+}
+
 dialog {
   padding: 1rem;
   width: 50%;
   margin: 0 auto;
+}
+
+.buttons button {
+  margin-top: 1rem;
+  padding: 0.25rem;
 }
