@@ -1,20 +1,21 @@
-
-// the constructor
-function Book(title, author, pages, read, id) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.id = id;
-  // unused
-  this.info = function() {
+class myBook {
+  constructor(title, author, pages, read, id) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.id = id;
+  }
+  
+  info() {
     return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
   }
+
 }
 
-//do stuff
+//do stuff with book
 function addBookToLibrary(title, author, pages, read, id) {
-  myLibrary.push(new Book(title, author, pages, read, id));
+  myLibrary.push(new myBook(title, author, pages, read, id));
 }
 
 // refresh library so no duplication
@@ -102,4 +103,4 @@ btn.addEventListener('click', displayBook);
 const myLibrary = [];
 let bookID = 1;
 // add first book manually /explicitly?
-myLibrary.push(new Book('The Hobbit', 'J.R.R. Tolkien', 295, false, 0));
+myLibrary.push(new myBook('The Hobbit', 'J.R.R. Tolkien', 295, false, 0));
